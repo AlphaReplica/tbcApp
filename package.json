@@ -1,0 +1,8 @@
+{
+  "name": "tbc-app",
+  "scripts": {
+    "startServer": "node tbc-server/server",
+    "startClient": "cd tbc-client && ng serve",
+    "prepare"    : "cd tbc-client && npm install"
+  }
+}

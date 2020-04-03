@@ -1,0 +1,14 @@
+<div class="field">
+    <div class="label"><div class="label-text">{{label}}</div><div *ngIf="error" class="label-error">({{error}})</div></div>
+    <div *ngIf="edit!=true" class="value">{{value}}</div>
+    <p-inputMask *ngIf="edit==true && pattern"
+                 class="input-field"
+                 [mask]="pattern"
+                 [placeholder]="pattern"
+                 [(ngModel)]="value"></p-inputMask>
+    <input *ngIf="edit==true && !pattern"
+            class="input-field ui-inputtext ui-corner-all ui-state-default ui-widget"
+            type="text"
+            pInputText
+            [(ngModel)]="value"/>
+</div>

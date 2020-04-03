@@ -1,0 +1,27 @@
+.top
+{
+    display: flex;
+    justify-content: space-between;
+    input
+    {
+        height: 34px;
+        line-height: 34px;
+        display: block;
+    }
+}
+
+.centered
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.centered-text
+{
+    text-align: center;
+}
+
+td
+{
+    border: none !important;
+}

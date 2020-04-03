@@ -1,0 +1,22 @@
+<div>
+    <form class="cont" [formGroup]="accountForm">
+        <div class="row"> 
+            <universal-field class="field" label="ანგარიშის ID"     [error]="getError('accountID')"     [edit]="editable" formControlName="accountID"></universal-field> 
+            <universal-field class="field" label="კლიენტის ნომერი" [error]="getError('clientNumber')" [edit]="editable" formControlName="clientNumber"></universal-field>
+        </div>
+        <div class="row">
+            <universal-dropdown class="field" label="ანგარიშის ტიპი" [enum]="accountTypes" [edit]="editable" formControlName="accountType"></universal-dropdown>
+            <universal-dropdown class="field" label="ვალუტა"        [enum]="currencies" [edit]="editable" formControlName="currency"></universal-dropdown>
+        </div>
+        <div class="row">
+            <universal-dropdown class="field" label="სტატუსი" [enum]="states" [edit]="editable" formControlName="state"></universal-dropdown>
+            <div class="buttons">
+                <button pButton *ngIf=" editable" type="button" icon="pi pi-check"     (click)="onSubmit()" class="button ui-button-success" [disabled]="!accountForm.valid"></button>
+                <button pButton *ngIf="!editable" type="button" icon="pi pi-user-edit" (click)="onEdit()"   class="button ui-button-info"></button>
+                <button pButton                   type="button" icon="pi pi-trash"     (click)="onDelete()" class="button ui-button-danger"></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- <universal-field label="olallalsdskasldj" pattern="99-aa"  [(value)]="val" edit=false></universal-field> -->

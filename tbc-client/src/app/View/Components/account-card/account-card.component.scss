@@ -1,0 +1,42 @@
+.cont
+{
+    width: 100%;
+    
+    .row
+    {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .field
+        {
+            width: 48%;
+        }
+
+        .field2
+        {
+            width: 32%;
+        }
+
+        .buttons
+        {
+            width: 48%;
+            display: flex;
+            justify-content: flex-end;
+
+            .button
+            {
+                width: 30%;
+                margin-top: 22px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+    
+.panel
+{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

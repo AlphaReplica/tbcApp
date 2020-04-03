@@ -1,0 +1,30 @@
+<p-panel class="panel" header="კლიენტების სია">
+    <p-table #dt [columns]="cols" [value]="clients" dataKey="clientID" [paginator]="true" [first]="page" [rows]="pageCount" (onPage)="paginate($event)">
+        <ng-template pTemplate="caption">
+                <div class="top">        
+                    <input type="text" pInputText size="50" placeholder="ძებნა" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                    <button pButton type="button" label="ახალი ჩანაწერი" class="ui-button-info" (click)="edit({clientID:0})"></button>
+                </div>
+            </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{col.field == 'accounts' ? rowData[col.field].length : rowData[col.field]}}
+                </td>
+                <td class="centered">
+                    <button pButton type="button" icon="pi pi-ticket"    (click)="view(rowData)"   class="ui-button-secondary"></button>
+                    <button pButton type="button" icon="pi pi-user-edit" (click)="edit(rowData)"   class="ui-button-info"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-panel>

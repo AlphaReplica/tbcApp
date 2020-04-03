@@ -1,0 +1,44 @@
+<p-panel class="panel" header="კლიენტის გვერდი">
+    <p-header class="header-right">
+        <button pButton (click)="onSubmit()" *ngIf=" editable" type="button" icon="pi pi-check"     class="button ui-button-success" [disabled]="!clientForm.valid"></button>
+        <button pButton (click)="onEdit()"   *ngIf="!editable" type="button" icon="pi pi-user-edit" class="button ui-button-info"></button>
+        <button pButton (click)="onDelete()"                   type="button" icon="pi pi-trash"     class="button ui-button-danger"></button>
+        <button pButton (click)="onHome()"                     type="button" icon="pi pi-home"      class="button ui-button-info"></button>
+    </p-header>
+    <form class="cont" [formGroup]="clientForm">
+        <div class="row"> 
+            <universal-field class="field" label="სახელი" [error]="getError('firstName')" [edit]="editable" formControlName="firstName"></universal-field> 
+            <universal-field class="field" label="გვარი"  [error]="getError('lastName')"  [edit]="editable" formControlName="lastName"></universal-field>
+        </div>
+        <div class="row">
+            <universal-field    class="field" label="პირადი ნომერი" [error]="getError('personalID')" [edit]="editable" formControlName="personalID"></universal-field>
+            <universal-field    class="field" label="ტელეფონი"     [error]="getError('phone')"       [edit]="editable" formControlName="phone"></universal-field>
+        </div>
+        <div class="row">
+            <universal-dropdown class="field" label="სქესი" [enum]="genderOptions" [edit]="editable" formControlName="gender"></universal-dropdown>
+        </div>
+        <p-panel class="panel" header="იურიდიული მისამართი">
+            <div class="row" formGroupName="legalAddress">
+                <universal-field class="field2" label="ქვეყანა"    [error]="getError('legalAddress.country')" [edit]="editable" formControlName="country"></universal-field> 
+                <universal-field class="field2" label="ქალაქი"    [error]="getError('legalAddress.city')"    [edit]="editable" formControlName="city"   ></universal-field>
+                <universal-field class="field2" label="მისამართი" [error]="getError('legalAddress.address')" [edit]="editable" formControlName="address"></universal-field>
+            </div>
+        </p-panel>
+        <p-panel class="panel" header="ფაქტიური მისამართი">
+            <div class="row" formGroupName="actualAddress">
+                <universal-field class="field2" label="ქვეყანა"    [error]="getError('actualAddress.country')" [edit]="editable" formControlName="country" ></universal-field> 
+                <universal-field class="field2" label="ქალაქი"    [error]="getError('actualAddress.city')"    [edit]="editable" formControlName="city"    ></universal-field>
+                <universal-field class="field2" label="მისამართი" [error]="getError('actualAddress.address')" [edit]="editable" formControlName="address" ></universal-field>
+            </div>
+        </p-panel>
+        <p-panel class="panel" header="ანგარიშები">
+            <p-header class="header-right">
+                <button pButton type="button" (click)="addNewAccount()" *ngIf="editable && !hasEmptyAccounts" icon="pi pi-plus" class="button ui-button-info"></button>
+            </p-header>
+            <div *ngIf="!hasAccounts" class="label">ანგარიშების სია ცარიელია</div>
+            <accounts-list *ngIf="hasAccounts" [(data)]="accounts"></accounts-list>
+        </p-panel>
+    </form>
+</p-panel>
+
+<!-- <universal-field label="olallalsdskasldj" pattern="99-aa"  [(value)]="val" edit=false></universal-field> -->
